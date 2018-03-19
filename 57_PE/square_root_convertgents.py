@@ -1,7 +1,13 @@
 #-*- coding: utf-8 -*-
 """
-Main goal: Find fractions
-1 + 1/(2+ 1/(2+...))
+Solution uses recurence relation for infinite continued fractions i.e.
+
+sqrt(2) = [1, 2, 2, 2, ...]
+
+p_n = a*p_(n-1) + p_(n-2)
+q_n = a*q_(n-1) + q_(n-2)
+
+where p_n/q_n is the continued fration expansion of sqrt(2) and a = 2
 """
 
 def convergents():
