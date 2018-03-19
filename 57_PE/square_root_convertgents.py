@@ -8,6 +8,9 @@ p_n = a*p_(n-1) + p_(n-2)
 q_n = a*q_(n-1) + q_(n-2)
 
 where p_n/q_n is the continued fration expansion of sqrt(2) and a = 2
+
+Page 366 of:
+http://people.math.binghamton.edu/dikran/478/Ch7.pdf
 """
 
 def convergents():
