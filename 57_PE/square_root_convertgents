@@ -3,9 +3,6 @@
 Main goal: Find fractions
 1 + 1/(2+ 1/(2+...))
 """
-	
-
-
 
 def convergents():
 
@@ -20,8 +17,9 @@ def convergents():
 		p_0, q_0 = p_1, q_1
 		p_1, q_1 = p_n, q_n
 
-		if len(str(p_n)) > len(str(q_n)):
-			counter += 1
-			print (counter)
+		if not len(str(p_n)) > len(str(q_n)): continue
+		
+		counter += 1
+	print("No. of convergents of sqrt(2) below 1000 where no. of digits in numerator > denominator: \n", counter)
 
 convergents()
