@@ -1,3 +1,4 @@
 # Project Euler
+Solutions to some of the Project Euler problems. 
 
-This directory contains solutions to some of the Project Euler problems. There are more on https://gist.github.com/sabihxh
+More solutions on https://gist.github.com/sabihxh
