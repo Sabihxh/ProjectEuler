@@ -1,8 +1,8 @@
 """
 Psuedo Code A:
 
-- Make is_palindrome function which return True if number is palindrome, otherwise False.
-- Make add_reverse function which adds the number and its reverse
+- is_palindrome function returns True if a number is palindrome, otherwise False.
+- add_reverse function adds the number and its reverse
 - Loop through numbers from 1 - 10,000
 - For each number, loop through 50 times
 - For every iteration of this 50 loop, check if its reverse is a palindrome
