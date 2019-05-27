@@ -1,0 +1,5 @@
+README.md
+ProjectEuler.egg-info/PKG-INFO
+ProjectEuler.egg-info/SOURCES.txt
+ProjectEuler.egg-info/dependency_links.txt
+ProjectEuler.egg-info/top_level.txt
