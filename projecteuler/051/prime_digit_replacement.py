@@ -46,8 +46,9 @@ def solution(prime_digits=6, replace_digits=3, target_prime_family=8):
 			return v[0]
 
 
+solution(prime_digits=5, replace_digits=1, target_prime_family=6)
 solution(prime_digits=5, replace_digits=2, target_prime_family=7)
-
+solution(prime_digits=6, replace_digits=3, target_prime_family=8)
 
 
 
