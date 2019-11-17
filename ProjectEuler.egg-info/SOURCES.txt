@@ -1,5 +1,0 @@
-README.md
-projecteuler.egg-info/PKG-INFO
-projecteuler.egg-info/SOURCES.txt
-projecteuler.egg-info/dependency_links.txt
-projecteuler.egg-info/top_level.txt
