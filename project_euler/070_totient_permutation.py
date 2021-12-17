@@ -1,36 +1,28 @@
 from math import gcd
 
 """
-Problem:
+Euler's Totient function, φ(n) [sometimes called the φ function], is used
+to determinethe number of positive numbers less than or equal to n which are
+relatively prime to n. For example, as 1, 2, 4, 5, 7, and 8, are all less than
+nine and relatively prime to nine, φ(9)=6.
 
-Euler's Totient function, φ(n) is used to determine the number of numbers
-less than n which are relatively prime to n. For example, as 1, 2, 4, 5, 7, and 8,
-are all less than nine and relatively prime to nine, φ(9)=6.
+The number 1 is considered to be relatively prime to every positive number,
+so φ(1)=1.
 
-n   Relatively Prime    φ(n)    n/φ(n)
-2   1                   1       2
-3   1,2                 2       1.5
-4   1,3                 2       2
-5   1,2,3,4             4       1.25
-6   1,5                 2       3
-7   1,2,3,4,5,6         6       1.1666...
-8   1,3,5,7             4       2
-9   1,2,4,5,7,8         6       1.5
-10  1,3,7,9             4       2.5
+Interestingly, φ(87109)=79180, and it can be seen that 87109 is a permutation
+of 79180.
 
-It can be seen that n=6 produces a maximum n/φ(n) for n ≤ 10.
-
-Find the value of n ≤ 1,000,000 for which n/φ(n) is a maximum.
+Find the value of n, 1 < n < 10^7, for which φ(n) is a permutation of n and
+the ratio n/φ(n) produces a minimum.
 
 """
 
 """
 Solution:
-
 https://www.dcode.fr/euler-totient
 
-
 """
+
 
 def distinct_prime_factors(n):
     i = 2
