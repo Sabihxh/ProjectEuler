@@ -1,41 +1,15 @@
-from math import sqrt
-import time
-
-test = 'Hello...'
-
-def sieve_of_eratosthenes(n):
-	# Create a boolean array "prime[0..n]" and 
-	# initialize all entries it as true. A value 
-	# in prime[i] will finally be false if i is 
-	# Not a prime, else true. 
-
+def generate_primes_under(n: int):
 	"""
-	t0 = time.time() 
-	c = sieve_of_eratosthenes(100000)
-	print("Total prime numbers in range:", c) 
-
-	t1 = time.time() 
-	print("Time required:", t1 - t0)
-
+	Returns list of all prime numbers <= n
 	"""
-	prime = [True for i in range(n+1)] 
-	
-	p = 2
-	while(p * p <= n): 
-		
-	# If prime[p] is not changed, then it is a prime 
-		if (prime[p] == True): 
-			
-			# Update all multiples of p 
-			for i in range(p * 2, n + 1, p): 
-				prime[i] = False
-		p += 1
-	c = 0
-	# Print all prime numbers
-	for p in range(2, n): 
-		if prime[p]: 
-			c += 1
-	return c 
+	for possiblePrime in range(2, n + 1):  # Assume number is prime until shown it is not.
+		isPrime = True
+		for num in range(2, int(possiblePrime ** 0.5) + 1):
+			if possiblePrime % num == 0:
+				isPrime = False
+				break
+		if isPrime:
+			yield possiblePrime
 
 
 def prime_factors(n):
