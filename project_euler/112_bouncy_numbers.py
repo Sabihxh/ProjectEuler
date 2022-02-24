@@ -13,59 +13,58 @@ Find the least number for which the proportion of bouncy numbers is exactly 99%.
 """
 
 def is_bouncy(n: int) -> bool:
+	"""
+	- get the first number that isn't equal to the first.
+
+	"""
 	n = str(n)
-	print(f'number: {n}')
-	for i, x in enumerate(n[1:]):
-		if x > n[0]:
+
+	# Check if all numbers are the same
+	if len(set(n)) == 1:
+		return False
+
+	# Find if the number should be increasing or decreasing
+	for i in range(len(n)-1):
+		if n[i] > n[i+1]:
 			increasing = True
+			index = i+1
 			break
-		elif x < n[0]:
+		elif n[i] < n[i+1]:
 			increasing = False
+			index = i+1
 			break
-	else:
-		print('not bouncy because all digits are the same')
-		return False
+		else:
+			continue
 
+	# Check if the number is bouncy
+	bouncy = False
 	if increasing:
-		'increasing'
-		for x in n[i+1:]:
-			if x < n[i]:
-				print('Bouncy', x, n[i])
-				return True
+		for i in range(index, len(n)-1):
+			if n[i] < n[i+1]:
+				bouncy = True
+				break
+	else:
+		for i in range(index, len(n)-1):
+			if n[i] > n[i+1]:
+				bouncy = True
+				break
 
-		print('no bouncy')
-		return False
-
-	else:  # decreasing
-		print('decreasing')
-		for x in n[i+1:]:
-			if x > n[i]:
-				print('Bouncy', x, n[i])
-				return True
-
-		print('no bouncy')
-		return False
+	return bouncy
 
 
-print(is_bouncy(22))
-assert is_bouncy(22) == False
-print(is_bouncy(66420))
-assert is_bouncy(66420) == False
-print(is_bouncy(134468))
-assert is_bouncy(134468) == False
-print(is_bouncy(155349))
-assert is_bouncy(155349) == True
+print(f'{False}:', is_bouncy(22))
+print(f'{False}:', is_bouncy(66420))
+print(f'{False}:', is_bouncy(134468))
+print(f'{True}:', is_bouncy(155349))
 
 
 
 def main(target: float):
 	bouncy_count = 0
-
-	for i in range(2, 10**6):
+	for i in range(2, 10**8):
 		if is_bouncy(i):
 			bouncy_count += 1
 		bouncy_percentage = bouncy_count/i
-		print(i, bouncy_percentage)
 		if bouncy_percentage >= target:
 			break
 
@@ -73,5 +72,5 @@ def main(target: float):
 	return i
 
 
-# if __name__ == "__main__":
-# 	main(0.6)
+if __name__ == "__main__":
+	main(0.99)
