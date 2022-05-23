@@ -1,3 +1,20 @@
+from fractions import gcd
+from time import time
+
+
+def timer_func(func):
+    """
+    This function shows the execution time of the function object passed
+    """
+    def wrap_func(*args, **kwargs):
+        t1 = time()
+        result = func(*args, **kwargs)
+        t2 = time()
+        print(f'Function {func.__name__!r} executed in {(t2-t1):.4f}s')
+        return result
+    return wrap_func
+
+
 def generate_primes_under(n: int):
     """
     Returns list of all prime numbers <= n
@@ -26,6 +43,10 @@ def prime_factors(n):
     if n > 1:
         factors.append(n)
     return factors
+
+
+def is_permutation(x: int, y: int) -> bool:
+    return sorted(str(x)) == sorted(str(y))
 
 
 def distinct_prime_factors(n):
@@ -62,7 +83,10 @@ def is_prime(n):
     return True
 
 
-from fractions import gcd
+def is_prime_2(n):
+    return n > 1 and all(n % i for i in range(2, int(n ** 0.5) + 1))
+
+
 
 
 def no_of_coprimes(n):

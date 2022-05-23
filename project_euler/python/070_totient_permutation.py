@@ -1,4 +1,8 @@
 from math import gcd
+from typing import Set
+from fractions import Fraction
+
+from utils import distinct_prime_factors, is_permutation, timer_func
 
 """
 Euler's Totient function, φ(n) [sometimes called the φ function], is used
@@ -23,64 +27,52 @@ https://www.dcode.fr/euler-totient
 
 """
 
-
-def distinct_prime_factors(n):
-    i = 2
-    factors = set()
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
-            factors.add(i)
-    if n > 1:
-        factors.add(n)
-    return factors
-
-
-def coprime(a, b):
-    return gcd(a, b) == 1
-
-
-def phi(n):
+def phi(n: int) -> int:
     dpfs = distinct_prime_factors(n)
     t = 1
     for p in dpfs:
-        t = t * (1 - (1 / p))
-    return n * t
+        t = t * (Fraction(p-1, p))
+    return int(n * t)
 
 
-def solution(N=10 ** 6):
-    max_ratio = 0
-    result = 0
-    for n in range(2, N + 1, 2):
+def test_phi():
+    n_and_phi_n = [(10, 4), (97, 96), (9798, 3080), (9708131, 9701832)]
+    for n, expected_phi_n in n_and_phi_n:
         phi_n = phi(n)
+        print(f'n: {n}, expected_phi_n: {expected_phi_n}, phi_n: {phi_n}')
+        assert phi(n) == expected_phi_n
+
+
+test_phi()
+
+
+@timer_func
+def solution(N=10**7):
+    """
+    Psuedocode:
+        - loop through all numbers under 10**7
+        - for each number, calculate Euler's Totient function, φ(n)
+        - if number and its φ(n) are not a permutation, skip
+        - else check if the ratio is minimum, if so, store the minimum
+        - print out the number with minimum ratio, at the end of the loop
+
+    Takes over 6 mins to run...too slow
+    """
+    min_ratio = 10
+    result = 0
+    for n in range(2, N+1):
+        phi_n = phi(n)
+        if not is_permutation(n, phi_n):
+            continue
         ratio = n / phi_n
-        if ratio > max_ratio:
-            max_ratio, result = ratio, n
+        if ratio < min_ratio:
+            min_ratio, result = ratio, n
             print(f"phi({n}) = {phi_n}, ratio = {ratio}")
 
     return result
 
 
-def is_prime(n):
-    return n > 1 and all(n % i for i in range(2, int(n ** 0.5) + 1))
-
-
-def solution2(N):
-    """See docs/069_overview.pdf"""
-    prime_product = 2
-    x = 3
-    while prime_product * 2 <= N:
-        if is_prime(x):
-            prime_product *= x
-            print(x, prime_product)
-        x += 2
-
-    return prime_product
-
-
 if __name__ == "__main__":
-    sol = solution2(10 ** 7)
+    sol = solution(10 ** 6)
     print(f"solution: {sol}")
     pass
