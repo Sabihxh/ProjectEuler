@@ -22,48 +22,51 @@ length of the square spiral for which the ratio of primes along both diagonals f
 falls below 10%?
 """
 
+
 def is_prime(n):
-	if n == 2 or n == 3:
-		return True
-	if n < 2 or n % 2 == 0:
-		return False
-	if n < 9:
-		return True
-	if n % 3 == 0:
-		return False
-	r = int(n ** 0.5)
-	f = 5
-	while f <= r:
-		if n % f == 0:
-			return False
-		if n % (f + 2) == 0:
-			return False
-		f += 6
-	return True
+    if n == 2 or n == 3:
+        return True
+    if n < 2 or n % 2 == 0:
+        return False
+    if n < 9:
+        return True
+    if n % 3 == 0:
+        return False
+    r = int(n**0.5)
+    f = 5
+    while f <= r:
+        if n % f == 0:
+            return False
+        if n % (f + 2) == 0:
+            return False
+        f += 6
+    return True
 
 
 def solution():
-	target_ratio = 0.1
-	# coefficients of the 3 quadratic equations for non-squared diagonal numbers
-	coefficients = [(4, -10, 7), (4, -8, 5), (4, -6, 3)]
-	primes_count = 0
-	for n in range(1, 100000):
-		side_length = (2*n) - 1
-		diagonal_count = (4*n) - 3
-		print(f'n: {n}, side_length: {side_length}, diagonal_count: {diagonal_count}')
-		for coeff in coefficients:
-			a, b, c = coeff
-			s = a*(n**2) + (b*n) + c
-			print(f'coeff: {coeff}', s)
-			if is_prime(s):
-				primes_count += 1
-		ratio = primes_count/diagonal_count
-		print(f'primes_count: {primes_count}, diagonal_count: {diagonal_count} ratio: {ratio}')
-		if n > 2 and ratio < target_ratio:
-			print(f'side_length: {side_length}')
-			break
-		print('*'*100)
+    target_ratio = 0.1
+    # coefficients of the 3 quadratic equations for non-squared diagonal numbers
+    coefficients = [(4, -10, 7), (4, -8, 5), (4, -6, 3)]
+    primes_count = 0
+    for n in range(1, 100000):
+        side_length = (2 * n) - 1
+        diagonal_count = (4 * n) - 3
+        print(f"n: {n}, side_length: {side_length}, diagonal_count: {diagonal_count}")
+        for coeff in coefficients:
+            a, b, c = coeff
+            s = a * (n**2) + (b * n) + c
+            print(f"coeff: {coeff}", s)
+            if is_prime(s):
+                primes_count += 1
+        ratio = primes_count / diagonal_count
+        print(
+            f"primes_count: {primes_count}, diagonal_count: {diagonal_count} ratio: {ratio}"
+        )
+        if n > 2 and ratio < target_ratio:
+            print(f"side_length: {side_length}")
+            break
+        print("*" * 100)
 
 
 if __name__ == "__main__":
-	solution()
+    solution()

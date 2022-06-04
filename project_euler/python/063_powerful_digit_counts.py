@@ -15,7 +15,7 @@ def solution(n_limit, p_limit):
     count = 0
     for n in range(1, n_limit):
         for p in range(1, p_limit):
-            n_power_p = n ** p
+            n_power_p = n**p
             if len(str(n_power_p)) == p:
                 count += 1
                 print(n, p, n_power_p)

@@ -2,7 +2,7 @@ from math import gcd
 from typing import Set
 from fractions import Fraction
 
-from utils import distinct_prime_factors, is_permutation, timer_func
+from utils import distinct_prime_factors, is_permutation, timeit
 
 """
 Euler's Totient function, φ(n) [sometimes called the φ function], is used
@@ -27,11 +27,12 @@ https://www.dcode.fr/euler-totient
 
 """
 
+
 def phi(n: int) -> int:
     dpfs = distinct_prime_factors(n)
     t = 1
     for p in dpfs:
-        t = t * (Fraction(p-1, p))
+        t = t * (Fraction(p - 1, p))
     return int(n * t)
 
 
@@ -39,14 +40,14 @@ def test_phi():
     n_and_phi_n = [(10, 4), (97, 96), (9798, 3080), (9708131, 9701832)]
     for n, expected_phi_n in n_and_phi_n:
         phi_n = phi(n)
-        print(f'n: {n}, expected_phi_n: {expected_phi_n}, phi_n: {phi_n}')
+        print(f"n: {n}, expected_phi_n: {expected_phi_n}, phi_n: {phi_n}")
         assert phi(n) == expected_phi_n
 
 
 test_phi()
 
 
-@timer_func
+@timeit
 def solution(N=10**7):
     """
     Psuedocode:
@@ -60,7 +61,7 @@ def solution(N=10**7):
     """
     min_ratio = 10
     result = 0
-    for n in range(2, N+1):
+    for n in range(2, N + 1):
         phi_n = phi(n)
         if not is_permutation(n, phi_n):
             continue
@@ -73,6 +74,6 @@ def solution(N=10**7):
 
 
 if __name__ == "__main__":
-    sol = solution(10 ** 6)
+    sol = solution(10**6)
     print(f"solution: {sol}")
     pass

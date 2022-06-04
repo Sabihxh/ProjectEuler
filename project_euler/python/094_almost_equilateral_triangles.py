@@ -2,7 +2,7 @@ import numpy as np
 from math import sqrt
 
 
-n = 10 ** 2
+n = 10**2
 
 
 def prime_factors(n):
@@ -20,7 +20,7 @@ def prime_factors(n):
 
 
 def solution(limit):
-    squares = {x ** 2: x for x in np.arange(2, int(sqrt(limit) + 1))}
+    squares = {x**2: x for x in np.arange(2, int(sqrt(limit) + 1))}
     result = []
     for p_2 in squares:
         factors = prime_factors(p_2)
@@ -42,4 +42,4 @@ def solution(limit):
     return result
 
 
-print(solution(10 ** 9))
+print(solution(10**9))

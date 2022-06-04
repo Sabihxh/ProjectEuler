@@ -13,7 +13,7 @@ def is_prime(a_num):
     if not a_num & 1:
         return False
 
-    limit = int(a_num ** 0.5) + 2
+    limit = int(a_num**0.5) + 2
     for x in range(3, limit, 2):
         if a_num % x == 0:
             return False

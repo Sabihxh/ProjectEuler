@@ -59,7 +59,7 @@ def phi(n):
     return n * t
 
 
-def solution(N=10 ** 6):
+def solution(N=10**6):
     max_ratio = 0
     result = 0
     for n in range(2, N + 1, 2):
@@ -73,7 +73,7 @@ def solution(N=10 ** 6):
 
 
 def is_prime(n):
-    return n > 1 and all(n % i for i in range(2, int(n ** 0.5) + 1))
+    return n > 1 and all(n % i for i in range(2, int(n**0.5) + 1))
 
 
 def solution2(N):
@@ -90,6 +90,6 @@ def solution2(N):
 
 
 if __name__ == "__main__":
-    sol = solution2(10 ** 7)
+    sol = solution2(10**7)
     print(f"solution: {sol}")
     pass

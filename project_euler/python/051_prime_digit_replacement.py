@@ -1,19 +1,28 @@
 from itertools import combinations
-import pickle
 import math
-import time
 
-from pixie.primes import generate_primes_under
-from pixie.utilities import timeit
+from utils import generate_primes_under, timeit
 
 
-@timeit
-def pickle_load():
-    with open("primes_10,000,000.pkl", "rb") as f:
-        return pickle.load(f)
+"""
+Problem 51 - Prime digit replacements
 
+By replacing the 1st digit of the 2-digit number *3, it turns out that six of
+the nine possible values: 13, 23, 43, 53, 73, and 83, are all prime.
 
-all_primes = pickle_load()
+By replacing the 3rd and 4th digits of 56**3 with the same digit, this 5-digit
+number is the first example having seven primes among the ten generated numbers,
+yielding the family: 56003, 56113, 56333, 56443, 56663, 56773, and 56993.
+Consequently 56003, being the first member of this family, is the smallest prime
+with this property.
+
+Find the smallest prime which, by replacing part of the number (not necessarily
+adjacent digits) with the same digit, is part of an eight prime value family.
+
+"""
+
+# all_primes = pickle_load()
+all_primes = generate_primes_under(10000000)
 
 
 @timeit
@@ -47,5 +56,5 @@ def solution(prime_digits=6, replace_digits=3, target_prime_family=8):
 
 
 solution(prime_digits=5, replace_digits=1, target_prime_family=6)
-solution(prime_digits=5, replace_digits=2, target_prime_family=7)
-solution(prime_digits=6, replace_digits=3, target_prime_family=8)
+# solution(prime_digits=5, replace_digits=2, target_prime_family=7)
+# solution(prime_digits=6, replace_digits=3, target_prime_family=8)

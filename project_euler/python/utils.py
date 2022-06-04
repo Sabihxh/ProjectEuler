@@ -2,16 +2,18 @@ from fractions import gcd
 from time import time
 
 
-def timer_func(func):
+def timeit(func):
     """
     This function shows the execution time of the function object passed
     """
+
     def wrap_func(*args, **kwargs):
         t1 = time()
         result = func(*args, **kwargs)
         t2 = time()
-        print(f'Function {func.__name__!r} executed in {(t2-t1):.4f}s')
+        print(f"Function {func.__name__!r} executed in {(t2-t1):.4f}s")
         return result
+
     return wrap_func
 
 
@@ -23,7 +25,7 @@ def generate_primes_under(n: int):
         2, n + 1
     ):  # Assume number is prime until shown it is not.
         isPrime = True
-        for num in range(2, int(possiblePrime ** 0.5) + 1):
+        for num in range(2, int(possiblePrime**0.5) + 1):
             if possiblePrime % num == 0:
                 isPrime = False
                 break
@@ -72,7 +74,7 @@ def is_prime(n):
         return True
     if n % 3 == 0:
         return False
-    r = int(n ** 0.5)
+    r = int(n**0.5)
     f = 5
     while f <= r:
         if n % f == 0:
@@ -84,9 +86,7 @@ def is_prime(n):
 
 
 def is_prime_2(n):
-    return n > 1 and all(n % i for i in range(2, int(n ** 0.5) + 1))
-
-
+    return n > 1 and all(n % i for i in range(2, int(n**0.5) + 1))
 
 
 def no_of_coprimes(n):
