@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 notebook = "*"
+numpy = "*"
+matplotlib = "*"
 
 [dev-packages]
 pytest = "*"

@@ -5,6 +5,8 @@ from utils import generate_primes_under, timeit
 
 
 """
+https://projecteuler.net/problem=51
+
 Problem 51 - Prime digit replacements
 
 By replacing the 1st digit of the 2-digit number *3, it turns out that six of

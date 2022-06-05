@@ -1,6 +1,8 @@
-from utils import is_permutation, timeit
+from utils import timeit
 
 """
+https://projecteuler.net/problem=52
+
 It can be seen that the number, 125874, and its double, 251748, contain exactly
 the same digits, but in a different order.
 

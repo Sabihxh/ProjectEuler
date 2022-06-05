@@ -1,36 +1,36 @@
-from math import factorial
-import numpy as np
+from functools import reduce
 from matplotlib import pyplot as plt
-
-# Function by https://stackoverflow.com/questions/4941753/is-there-a-math-ncr-function-in-python
 import operator as op
 
 
+"""
+https://projecteuler.net/problem=53
+"""
+
+# Function by https://stackoverflow.com/questions/4941753/is-there-a-math-ncr-function-in-python
+
+
 def ncr(n, r):
-    r = min(r, n - r)
+    if r > n:
+        return 0
     if r == 0:
         return 1
-    numer = reduce(op.mul, xrange(n, n - r, -1))
-    denom = reduce(op.mul, xrange(1, r + 1))
-    return numer // denom
+    numerator = reduce(op.mul, range(n, n - r, -1))
+    denominator = reduce(op.mul, range(1, r + 1))
+    return numerator // denominator
 
 
-# print ncr(24, 15)
-
-# Interesting observation, a wave is made when you print ncr
 def solution(limit=100):
     c = 0
     for n in range(23, limit + 1):
         for r in range(2, n):
             if ncr(n, r) > 1000000:
                 c += 1
-                # print ncr(n, r)
-    print "Number of values of nCr greater than 1000000: %s" % c
+                print(ncr(n, r))
+    print(f"Number of values of nCr greater than 1000000: {c}")
 
 
-solution()
-
-
+# observation, printed ncr generates a waves of numbers
 def list_of_ncr(limit=100):
     ncr_list = []
     for n in range(23, limit + 1):
@@ -41,6 +41,12 @@ def list_of_ncr(limit=100):
     return ncr_list
 
 
-plt.plot(list_of_ncr()[:100])
-plt.ylabel("Pascal numbers > million")
-plt.show()
+if __name__ == '__main__':
+    # get solution
+    solution()
+
+    # plot the ncr
+    plt.plot(list_of_ncr()[:100])
+    plt.ylabel("Pascal numbers > million")
+    plt.show()
+
