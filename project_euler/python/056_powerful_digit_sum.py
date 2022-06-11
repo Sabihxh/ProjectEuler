@@ -1,3 +1,6 @@
+from utils import timeit
+
+
 """
 Powerful digit sum
 https://projecteuler.net/problem=56
@@ -11,15 +14,24 @@ maximum digital sum?
 """
 
 
+@timeit
 def main():
 	max_sum = 0
-	for a in range(100):
-		for b in range(100):
+	for a in range(90, 100):
+		for b in range(90, 100):
 			digital_sum = sum(map(int, list(str(a**b))))
 			if digital_sum > max_sum:
 				max_sum = digital_sum
-				print(f"max_sum: {max_sum}, a: {a}, b: {b}")
+				# print(f"max_sum: {max_sum}, a: {a}, b: {b}")
+	return max_sum
+
+
+@timeit
+def main2():
+	"""one liner solution from the forums"""
+	return max([sum([int(i) for i in str(a**b)]) for a in range(90, 100) for b in range(90, 100)])
 
 
 if __name__ == '__main__':
 	main()
+	main2()
