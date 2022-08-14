@@ -1,3 +1,4 @@
+from html.parser import HTMLParser
 from fractions import gcd
 from time import time
 
@@ -99,3 +100,14 @@ def no_of_coprimes(n):
             counter += 1
 
     return counter
+
+
+def display_html(html):
+
+    class MyHTMLParser(HTMLParser):
+        def handle_data(self, data):
+            print(data)
+
+    parser = MyHTMLParser()
+    parser.feed(html)
+    parser.close()
