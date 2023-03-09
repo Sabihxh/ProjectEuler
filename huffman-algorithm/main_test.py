@@ -22,6 +22,5 @@ def test_encode():
 
 
 def test_main():
-    value = "abbccc"
-    expected_value = "101111000"
-    assert main(value) == expected_value
+    assert main("abbccc") == "101111000"
+    assert main("abbcccddddddddd") == "010011011000000111111111"
