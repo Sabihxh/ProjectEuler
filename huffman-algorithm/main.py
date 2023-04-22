@@ -44,6 +44,6 @@ def main(value: str) -> str:
 
 
 if __name__ == "__main__":
-    value = "abbccc"
+    value = "Adam is great at nothing except eating and sleeping and being cute."
     encoded_value = main(value)
     print(f"value: {value}", f"encoded_value: {encoded_value}", sep="\n")
