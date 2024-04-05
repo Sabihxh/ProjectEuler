@@ -1,5 +1,5 @@
 from html.parser import HTMLParser
-from fractions import gcd
+from math import gcd
 from time import time
 
 
